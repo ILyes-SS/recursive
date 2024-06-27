@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fibs(n) {
+        let elem1 = 0;
+        let elem2 = 1;
+        let arr = [0, 1];
+        for (let i = 1; i <= n - 2; i++) {
+          let newEle = elem1 + elem2;
+          arr.push(newEle);
+          elem1 = elem2;
+          elem2 = newEle;
+        }
+        return arr;
+      }
+      console.log(fibs(8));
+
+      function fibsRec(n) {
+        let arr = [];
+        if (n == 1) {
+          arr.unshift(0);
+          return arr;
+        } else if (n == 2) {
+          arr.unshift(0, 1);
+          return arr;
+        } else {
+          let newArr = [...fibsRec(n - 1)];
+          return [
+            ...fibsRec(n - 1),
+            newArr[newArr.length - 1] + newArr[newArr.length - 2],
+          ];
+        }
+      }
+      console.log(fibsRec(8));
+    </script>
+  </body>
+</html>
